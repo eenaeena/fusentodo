@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusentodo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decorations">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <!-- フローティング呼び出しボタン -->
+    <button id="toggleBtn" class="fab" aria-label="Toggle Notes">
+        <i class="fas fa-sticky-note"></i>
+    </button>
+
+    <!-- メインボード（初期状態は隠すかアイコン押下で表示） -->
+    <div id="board" class="board hidden">
+        <header class="board-header">
+            <h1>Fusentodo</h1>
+            <p>スグ書けて、サッと消せる。</p>
+        </header>
+
+        <div class="input-section glass-panel">
+            <textarea id="noteInput" placeholder="メモやToDoを入力..." rows="2"></textarea>
+            <button id="addBtn" class="primary-btn"><i class="fas fa-paper-plane"></i> 追加</button>
+        </div>
+
+        <div id="notesContainer" class="notes-container">
+            <!-- 付箋がここに追加される -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
