@@ -166,6 +166,21 @@ body {
     font-size: 1rem;
     resize: none;
     outline: none;
+    overflow-y: auto;
+    min-height: 70px;  /* 初期は3行程度の高さ */
+    max-height: 250px; /* 大きくなりすぎるのを防ぐ最大高さ */
+}
+
+/* 入力欄のスクロールバー用デザイン */
+#noteInput::-webkit-scrollbar {
+    width: 6px;
+}
+#noteInput::-webkit-scrollbar-track {
+    background: transparent;
+}
+#noteInput::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 
 #noteInput::placeholder {
@@ -241,12 +256,46 @@ body {
     animation: fadeOut 0.3s ease-in forwards;
 }
 
+.note-header {
+    font-size: 0.75rem;
+    color: #94a3b8; /* 日付と同じカラー */
+    margin-bottom: 12px;
+}
+
+.note-checkbox-wrapper label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.note-checkbox {
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    accent-color: var(--accent-color);
+}
+
+.note-content {
+    margin-bottom: 12px;
+}
+
 .note-text {
     font-size: 0.95rem;
     line-height: 1.5;
-    margin-bottom: 12px;
     white-space: pre-wrap;
     word-break: break-word;
+    transition: color 0.2s;
+}
+
+/* 付箋全体がチェックされたときのスタイル（グレーアウトと背景暗転） */
+.note.is-note-checked {
+    background: rgba(30, 41, 59, 0.4); /* 背景をより暗く落とす */
+}
+
+.note.is-note-checked .note-text,
+.note.is-note-checked .note-number {
+    color: #475569; /* テキストをグレーアウト */
 }
 
 .note-footer {
@@ -300,4 +349,33 @@ body {
         width: 100%;
         max-width: 100%;
     }
+}
+
+/* Character Styles */
+.character-bottom-left {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 350px; /* 見えないとのことだったので、さらに特大サイズに変更 */
+    height: auto;
+    z-index: 50;
+    animation: float 5s ease-in-out infinite;
+}
+
+.header-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.character-header {
+    width: 100px; /* タイトルの横もさらに大きく */
+    height: auto;
+    object-fit: contain;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
